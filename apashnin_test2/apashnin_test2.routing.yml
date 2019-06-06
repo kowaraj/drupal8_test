@@ -1,0 +1,8 @@
+apashnin_test:
+        path: '/apashnin/test2'
+        defaults:
+                _title: 'Test apashnin #2'
+                _controller: '\Drupal\apashnin_test2\Controller\ApashninTest2Controller::content'
+        requirements: 
+                _permission: 'access content'
+

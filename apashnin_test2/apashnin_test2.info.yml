@@ -1,0 +1,6 @@
+name: 'A.Pashnin Test Module #2'
+type: module
+description: 'Test module #2 from apashnin'
+package: Example modules
+core: 8.x
+
