@@ -1,5 +1,5 @@
 apashnin_test3.content:
-        path: '/apashnin/test3'
+        path: '/apashnin/test3/{param1}'
         defaults:
                 _title: 'Title: Test apashnin #3'
                 _controller: '\Drupal\apashnin_test3\Controller\ApashninTest3Controller::content'
