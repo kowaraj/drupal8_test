@@ -1,0 +1,7 @@
+apashnin_test.content:
+        path: '/hello/apashnin'
+        defaults:
+                _controller: '\Drupal\apashnin_test\Controller\ApashninTestController::hello'
+        requirements: 
+                _permission: 'access content'
+

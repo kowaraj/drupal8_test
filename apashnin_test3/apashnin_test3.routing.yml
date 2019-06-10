@@ -1,0 +1,8 @@
+apashnin_test3.content:
+        path: '/apashnin/test3'
+        defaults:
+                _title: 'Title: Test apashnin #3'
+                _controller: '\Drupal\apashnin_test3\Controller\ApashninTest3Controller::content'
+        requirements: 
+                _permission: 'access content'
+
