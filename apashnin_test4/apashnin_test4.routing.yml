@@ -1,0 +1,8 @@
+apashnin_test4.content:
+        path: '/apashnin/EventDisplay'
+        defaults:
+                _title: 'The simplest Event Display'
+                _controller: '\Drupal\apashnin_test4\Controller\ApashninTest4Controller::content'
+        requirements: 
+                _permission: 'access content'
+

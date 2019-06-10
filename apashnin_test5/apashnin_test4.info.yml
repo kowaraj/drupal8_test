@@ -1,0 +1,6 @@
+name: 'Name: A.Pashnin Test Module #4'
+type: module
+description: 'Description: The simplest Event Display'
+package: Example modules
+core: 8.x
+
