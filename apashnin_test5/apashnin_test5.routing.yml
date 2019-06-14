@@ -1,0 +1,24 @@
+apashnin_test5.content:
+        path: '/apashnin/EventDisplay/v1'
+        defaults:
+                _title: 'xThe Event Display (v.1.0)'
+                _controller: '\Drupal\apashnin_test5\Controller\ApashninTest5Controller::content'
+        requirements: 
+                _permission: 'access content'
+
+apashnin_test5.secondpage:
+        path: '/apashnin/EventDisplay/secondpage'
+        defaults:
+                _title: 'Second page'
+                _controller: '\Drupal\apashnin_test5\Controller\ApashninTest5Controller::secondpage'
+        requirements: 
+                _permission: 'access content'
+
+apashnin_test5.loginpage:
+        path: '/apashnin/EventDisplay/loginpage'
+        defaults:
+                _title: 'Login page'
+                _controller: '\Drupal\apashnin_test5\Controller\ApashninTest5Controller::loginpage'
+        requirements: 
+                _permission: 'access content'
+

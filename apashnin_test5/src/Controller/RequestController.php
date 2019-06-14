@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\apashnin_test4\Controller;
+namespace Drupal\apashnin_test5\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
 
-class ApashninTest4Controller extends ControllerBase {
+class ApashninTest5Controller extends ControllerBase {
 
 	public function content() {
 		return [
@@ -16,8 +16,8 @@ class ApashninTest4Controller extends ControllerBase {
 setInterval(myMethod, 3000); 
 function myMethod( ) { 
 var d = new Date();
-var num_of_seconds = d.getSeconds();
-var num_of_seconds_str = ("00" + num_of_seconds+1).slice(-2)
+var num_of_seconds = d.getSeconds() + 1;
+var num_of_seconds_str = ("00" + num_of_seconds).slice(-2)
 document.getElementById(\'ed00\').src="/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_" + num_of_seconds_str + ".png" ;;
 console.log("refreshed"); 
 }
