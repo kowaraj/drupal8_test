@@ -7,12 +7,12 @@ use Drupal\Core\Controller\ControllerBase;
 
 class ApashninTest5Controller extends ControllerBase {
 
-	public function secondpage() {
+	public function secondpage($param) {
 		return [
       			'#type' => 'markup',
       			'#markup' => $this->t('
 <p>
-This is the SECOND PAGE
+This is the SECOND PAGE: $param
 </p>
 			<p>
 			<img id="ed00" style="width:100px;height:60px;border:0;" src="/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_01.png" />

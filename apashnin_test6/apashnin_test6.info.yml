@@ -1,0 +1,6 @@
+name: 'A.Pashnin Test Module #6'
+type: module
+description: 'The Event Display (v.2.0)'
+package: Example modules
+core: 8.x
+

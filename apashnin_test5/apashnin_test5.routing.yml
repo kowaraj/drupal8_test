@@ -7,7 +7,7 @@ apashnin_test5.content:
                 _permission: 'access content'
 
 apashnin_test5.secondpage:
-        path: '/apashnin/EventDisplay/secondpage'
+        path: '/apashnin/EventDisplay/secondpage/{param}'
         defaults:
                 _title: 'Second page'
                 _controller: '\Drupal\apashnin_test5\Controller\ApashninTest5Controller::secondpage'

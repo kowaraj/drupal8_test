@@ -1,0 +1,6 @@
+apashnin_test6.admin:
+        title: 'Title of apashnin_test6 module settings'
+        description: 'Description of the example of how to make an admin settings page link'
+        parent: system.admin_config_development
+        route_name: apashnin_test6.content
+        weight: 99
