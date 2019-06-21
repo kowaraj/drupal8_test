@@ -1,13 +1,13 @@
 apashnin_test6.content:
-        path: '/apashnin/EventDisplay/v2'
+        path: '/apashnin/EventDisplay/v6'
         defaults:
-                _title: 'The Event Display (v.2.0)'
+                _title: 'The Event Display (v.6.0)'
                 _controller: '\Drupal\apashnin_test6\Controller\ApashninTest6Controller::content'
         requirements: 
                 _permission: 'access content'
 
 apashnin_test6.secondpage:
-        path: '/apashnin/EventDisplay/v2/secondpage/{param}'
+        path: '/apashnin/EventDisplay/v6/secondpage/{param}'
         defaults:
                 _title: 'Second page'
                 _controller: '\Drupal\apashnin_test6\Controller\ApashninTest6Controller::secondpage'
@@ -15,10 +15,18 @@ apashnin_test6.secondpage:
                 _permission: 'access content'
 
 apashnin_test6.loginpage:
-        path: '/apashnin/EventDisplay/v2/loginpage'
+        path: '/apashnin/EventDisplay/v6/loginpage'
         defaults:
                 _title: 'Login page'
                 _controller: '\Drupal\apashnin_test6\Controller\ApashninTest6Controller::loginpage'
+        requirements: 
+                _permission: 'access content'
+
+apashnin_test6.ed00:
+        path: '/apashnin/EventDisplay/v6/ed00'
+        defaults:
+                _title: 'Main page of the Event Display'
+                _controller: '\Drupal\apashnin_test6\Controller\EventDisplay::mainpage'
         requirements: 
                 _permission: 'access content'
 

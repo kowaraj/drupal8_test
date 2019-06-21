@@ -50,7 +50,7 @@ function myMethod( ) {
 var d = new Date();
 var num_of_seconds = d.getSeconds() + 1;
 var num_of_seconds_str = ("00" + num_of_seconds).slice(-2)
-document.getElementById(\'ed00\').src="/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_" + num_of_seconds_str + ".png" ;;
+document.getElementById(\'ed00\').src="/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_current.png?" + Math.random() ;;
 console.log("refreshed"); 
 }
 </script>
@@ -91,7 +91,7 @@ First name: <input type="text" onkeyup="showHint(this.value)">
 
 									  
 			<div>
-HELLOO! 
+?HELLOO! 
 <p><a href="secondpage">Second page</a></p>
 <p><a href="loginpage">Login</a></p>
 <p><a href="http://asuseepc900:9090/api/a1">Action: a1</a></p>
