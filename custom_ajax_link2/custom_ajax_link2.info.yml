@@ -1,0 +1,5 @@
+name: 'apashnin - custom-ajax-link-2'
+type: module
+description: 'another test module'
+package: Example modules
+core: 8.x

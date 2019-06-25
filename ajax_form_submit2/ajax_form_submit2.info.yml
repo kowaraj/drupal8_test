@@ -1,0 +1,5 @@
+name: apashnin - Ajax Form Submit example - 2
+type: module
+description: apashnin - Demonstrates the Drupal Form API with ajax submit.
+package: Example modules
+core: 8.x

@@ -1,0 +1,10 @@
+<?php
+ 
+function custom_ajax_link_preprocess_page (&$variables) {
+ 
+  $logged_in = \Drupal::currentUser()->isAuthenticated();
+  if (!$logged_in) {
+    $libraries['#attached']['library'][] = 'core/drupal.ajax';
+    render($libraries);
+  }
+}

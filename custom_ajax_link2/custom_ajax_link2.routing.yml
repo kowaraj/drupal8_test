@@ -1,0 +1,24 @@
+custom_ajax_link2.mainpage:
+        path: '/custom_ajax_link2/mainpage/{xparam}'
+        defaults:
+                _title: 'main-cal2'
+                _controller: '\Drupal\custom_ajax_link2\Controller\CustomAjaxLink2Controller::mainpage'
+        requirements: 
+                _permission: 'access content'
+
+custom_ajax_link2.testpage:
+        path: '/custom_ajax_link2/testpage'
+        defaults:
+                _title: 'test-cal2'
+                _controller: '\Drupal\custom_ajax_link2\Controller\CustomAjaxLink2Controller::testpage'
+        requirements: 
+                _permission: 'access content'
+
+custom_ajax_link2.alertpage:
+        path: '/custom_ajax_link2/alertpage/{xname}'
+        defaults:
+                _title: 'alert-cal2'
+                _controller: '\Drupal\custom_ajax_link2\Controller\CustomAjaxLink2Controller::alertpage'
+        requirements: 
+                _permission: 'access content'
+                
