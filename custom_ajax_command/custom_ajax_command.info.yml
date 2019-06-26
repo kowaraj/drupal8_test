@@ -1,0 +1,5 @@
+name: 'apashnin - Custom Ajax Command'
+description: 'apashnin - A simple implementation of the Ajax custom command' 
+core: 8.x 
+type: module 
+package: Example modules

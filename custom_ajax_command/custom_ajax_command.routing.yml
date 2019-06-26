@@ -1,0 +1,16 @@
+custom_ajax_command.customalert:
+        path: '/custom_ajax_command/customalert'
+        defaults:
+                _title: 'custom-alert-cac'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::customalert'
+        requirements: 
+                _permission: 'access content'
+
+custom_ajax_command.testpage:
+        path: '/custom_ajax_command/testpage'
+        defaults:
+                _title: 'test-cac'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::testpage'
+        requirements: 
+                _permission: 'access content'
+
