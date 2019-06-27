@@ -20,6 +20,15 @@ function custom_ajax_command_theme($existing, $type, $theme, $path) {
     'my_template2' => [
       'variables' => ['test_var' => NULL],
     ],
+    'my_template3' => [
+      'variables' => [
+        'test_var' => NULL,
+        'ss_path' => NULL,
+        'events' => [],
+        'featured' => [],
+
+      ]
+    ],
 
   ];
 }

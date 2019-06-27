@@ -38,6 +38,14 @@ class CustomAjaxCommandForm extends FormBase {
 			'#theme' => 'my_template2',
 			'#test_var' => $this->t('Test Value for the Form!'),
 		];
+		$form['ed_template3'] = [
+			'#theme' => 'my_template3',
+			'#test_var' => $this->t('Test Value for the Form for Template #3!'),
+			'#ss_path' => '/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_default.png',
+			'#events' => ['event1', 'event2'],
+            '#featured' => ['featured1', 'featured2'],
+
+		];
 		$form['ed_ss'] = [
 			'#type' => 'markup',
 			'#markup' => '			

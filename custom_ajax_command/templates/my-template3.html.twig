@@ -1,0 +1,19 @@
+<p>Test twig template ### 3 --- v.3 !</p>
+ 
+<p>test_var: {{ test_var }}</p>
+
+<img id="ed00" style="width:200px;height:120px;border:0;" src={{ ss_path }} > 
+
+<h3>Featured Events</h3>
+<ul>
+    {% for featured_event in featured %}
+    <li>{{ featured_event }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Events</h3>
+<ul>
+    {% for event in events %}
+    <li>{{ event }}</li>
+    {% endfor %}
+</ul>
