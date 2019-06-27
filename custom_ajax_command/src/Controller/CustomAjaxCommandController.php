@@ -33,6 +33,21 @@ class CustomAjaxCommandController extends ControllerBase {
 			</div>
 
 			'),
-    		];
+    	];
 	}
+
+	public function templatepage() {
+		return [
+		  '#theme' => 'my_template',
+		  '#test_var' => $this->t('Test Value'),
+		];
+	}
+
+	public function templatepage2() {
+		return [
+		  '#theme' => 'my_template2',
+		  '#test_var' => $this->t('Test Value'),
+		];
+	}
+	
 }
