@@ -26,9 +26,12 @@ function custom_ajax_command_theme($existing, $type, $theme, $path) {
         'ss_path' => NULL,
         'events' => [],
         'featured' => [],
-
       ]
     ],
-
+    'ed_online' => [
+      'variables' => [
+        'ss_path' => NULL,
+      ]
+    ],
   ];
 }
