@@ -4,6 +4,7 @@ use Drupal\custom_ajax_command\Form\CustomAjaxCommandForm;
 function custom_ajax_command_preprocess_page (&$variables) {
  
   $variables['#attached']['library'][] = 'custom_ajax_command/custom_ajax_command';
+  $variables['#attached']['library'][] = 'custom_ajax_command/custom_ajax_command2';
  
   # Add libraries for anonymous
   $logged_in = \Drupal::currentUser()->isAuthenticated();

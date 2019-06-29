@@ -14,7 +14,7 @@
      # Implements Drupal \Core\Ajax\CommandInterface: render ().
      public function render () {
        return array (
-         'command' => 'customAjaxCommand', // Required property - specifies the name of the custom Jquery (JS) method that will be started
+         'command' => 'customAjaxCommand2', // Required property - specifies the name of the custom Jquery (JS) method that will be started
          'message' => $this->message, // Variables that will be available in response
        );
      }

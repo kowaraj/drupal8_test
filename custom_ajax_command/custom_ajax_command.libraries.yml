@@ -7,5 +7,16 @@ custom_ajax_command:
   dependencies:
     - core/drupal.ajax
     - core/jquery
-    - core/ jquery.once
-    - core/ drupal
+    - core/jquery.once
+    - core/drupal
+
+custom_ajax_command2:
+  version: 1
+  js:
+    # Add JS files
+    js/custom_ajax_command2.js: {}
+  dependencies:
+    - core/drupal.ajax
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

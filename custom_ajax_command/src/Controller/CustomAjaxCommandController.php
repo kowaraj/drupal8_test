@@ -42,7 +42,7 @@ class CustomAjaxCommandController extends ControllerBase {
 		$response = new AjaxResponse();
 
         # Custom Ajax command
-        $message = 'This alert () was started from the Ajax custom command2';
+        $message = 'This alert () was started from the Ajax custom command2-2';
         $response->addCommand(new CustomAjaxCommand2($message));
  
 		# Return response
