@@ -54,8 +54,19 @@ class CustomAjaxCommandController extends ControllerBase {
       			'#type' => 'markup',
       			'#markup' => $this->t('
 			<div>
+			<img id="ed00" style="width:600px;height:360px;border:0;" src="/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_default.png"> 
+			<script>
+				window.onload=function(){
+					if( document.getElementById("id_customalert2")!=null ) {
+						document.getElementById("id_customalert2").click();
+						console.log("customalert2 link has been auto-clicked");
+					}
+				}
+
+			</script>
+			
 			<p>
-			<a class="use-ajax" href="/custom_ajax_command/customalert2"> Alert (custom) me! </a>
+			<a id="id_customalert2" class="use-ajax" href="/custom_ajax_command/customalert2"> Alert (custom) me! </a>
 			</p>
 			</div>
 
