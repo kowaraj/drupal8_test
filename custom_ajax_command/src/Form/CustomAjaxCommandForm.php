@@ -22,7 +22,9 @@ class CustomAjaxCommandForm extends FormBase {
 		$dir_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/';
 		$d = array_diff(scandir($dir_path), array('..', '.', '.DAV'));
 		$fn_last = end($d); 
-		$fn_first = array_pop(array_reverse($d));
+		//Notice: Only variables should be passed by reference in the next line!... 
+		$rev_d = array_reverse($d);
+		$fn_first = array_pop($rev_d);
 		$ss_current_fn = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_current.png';
 		//unlink($copy_dest_fn);
 		if (! rename($dir_path . $fn_first, $ss_current_fn)) {
@@ -73,8 +75,9 @@ class CustomAjaxCommandForm extends FormBase {
 			];
 		} else {
 			$form['textfields_container']['textfields']['online_ed'] = [
-				'#theme' => 'ed_online',
+				'#theme' => 'ed_online2',
 				'#ss_path' => '/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_current.png',
+				'#ss_path2' => '/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_current_rollover.png',
 			];			
 		}
 		return $form;

@@ -13,7 +13,6 @@ custom_ajax_command.customalert:
                 _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::customalert'
         requirements: 
                 _permission: 'access content'
-
 custom_ajax_command.testpage:
         path: '/custom_ajax_command/testpage'
         defaults:
@@ -22,6 +21,21 @@ custom_ajax_command.testpage:
         requirements: 
                 _permission: 'access content'
 
+custom_ajax_command.customalert2:
+        path: '/custom_ajax_command/customalert2'
+        defaults:
+                _title: 'custom-alert-cac2'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::customalert2'
+        requirements: 
+                _permission: 'access content'
+custom_ajax_command.testpage2:
+        path: '/custom_ajax_command/testpage2'
+        defaults:
+                _title: 'test-cac2'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::testpage2'
+        requirements: 
+                _permission: 'access content'
+                
 custom_ajax_command.templatepage:
         path: '/custom_ajax_command/templatepage'
         defaults:
