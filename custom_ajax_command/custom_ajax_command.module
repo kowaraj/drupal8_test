@@ -3,6 +3,10 @@ use Drupal\custom_ajax_command\Form\CustomAjaxCommandForm;
 
 function custom_ajax_command_preprocess_page (&$variables) {
  
+
+  \Drupal::state()->set('EventDisplayCurrentBuffer','1');
+
+
   $variables['#attached']['library'][] = 'custom_ajax_command/custom_ajax_command';
   $variables['#attached']['library'][] = 'custom_ajax_command/custom_ajax_command2';
  
@@ -48,3 +52,4 @@ function custom_ajax_command_cron() {
   \Drupal::logger('custom_ajax_command')->notice('Cron ran for custom_ajax_command -apashnin');
 
 }
+

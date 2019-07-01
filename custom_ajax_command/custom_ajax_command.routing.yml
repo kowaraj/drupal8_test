@@ -1,3 +1,27 @@
+custom_ajax_command.trigger:
+        path: '/custom_ajax_command/trigger'
+        defaults:
+                _title: 'trigger-cac'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::trigger'
+        requirements: 
+                _permission: 'access content'
+
+custom_ajax_command.trigger2:
+        path: '/custom_ajax_command/trigger2'
+        defaults:
+                _title: 'trigger2-cac'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::trigger2'
+        requirements: 
+                _permission: 'access content'
+
+custom_ajax_command.trigger3:
+        path: '/custom_ajax_command/trigger3'
+        defaults:
+                _title: 'trigger3-cac'
+                _controller: '\Drupal\custom_ajax_command\Controller\CustomAjaxCommandController::trigger3'
+        requirements: 
+                _permission: 'access content'
+
 custom_ajax_command.mainpage:
         path: '/custom_ajax_command/mainpage'
         defaults:

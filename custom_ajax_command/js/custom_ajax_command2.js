@@ -21,26 +21,38 @@
                   }
               }
               list.push(img);
+              console.log("Preloading image: " + array[i]);
               img.src = array[i];
           }
         }
-        var img_list = [
-          "/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740332.png", 
-          "/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740333.png", 
-          "/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740334.png",
-          "/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740335.png",
-          "/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740336.png"
-        ];
-        preloadImages(img_list);
-        console.log("Images (5) have been preloaded. ")
+        console.log("Current buffer now is: " + response['message']['current_buf_now']);
+        console.log(response);
+        // console.log(response['message']['ts_to_fetch']);
+        // console.log(response['message']['ts_to_fetch_index']);
+        // console.log(response['message']['stale']);
+        // console.log(response['message']['slice']);
+
+        // const ed00_status = response['message']['stale'];
+        var ed_ss_path = response['message']['img_path'];
+        var ed_ss_list = response['message']['d'];
+        var ed_ss_num = ed_ss_list.length; 
+        console.log("IMAGES: " + ed_ss_list.join(','));
+
+        const ed_ss_list_of_url = ed_ss_list.map(x => ed_ss_path + x);
+        preloadImages(ed_ss_list_of_url);
+
+        console.log("Images (" + ed_ss_num + ") have been preloaded. ")
 
         var i = 0;
         function run_1s_timer() {
           setInterval(function() {
             var myImageElement = document.getElementById('ed00');
+            var myImageStatus = document.getElementById('ed00_status');
+            //myImageStatus.innerText = "STALE = " + ed00_status;
+
             console.log("switching to the next image" + i)
-            myImageElement.src = img_list[i]; // '?rand=' + Math.random();
-            i = (i+1)%4;
+            myImageElement.src = ed_ss_list_of_url[i];
+            i = (i+1)%ed_ss_num;
           }, 1000);
         }
         run_1s_timer();
