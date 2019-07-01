@@ -10,6 +10,16 @@ use Drupal\Core\Ajax\AlertCommand;
 
 class CustomAjaxCommandController extends ControllerBase {
 
+	private $a = 666;
+
+	private function set_a($new_a) {
+		$this->a = $new_a;
+	}
+
+	private function get_a() {
+		return $this->a;
+	}
+
 	public function customalert() {
  
 		# New responses
@@ -28,8 +38,17 @@ class CustomAjaxCommandController extends ControllerBase {
       			'#type' => 'markup',
       			'#markup' => $this->t('
 			<div>
-			<p>
-			<a class="use-ajax" href="/custom_ajax_command/customalert"> Alert (custom) me! </a>
+			<script>
+				window.onload=function(){
+					if( document.getElementById("id_customalert")!=null ) {
+						document.getElementById("id_customalert").click();
+						console.log("customalert link has been auto-clicked");
+					}
+				}
+			</script>
+
+			<p hidden>
+			<a id="id_customalert" class="use-ajax" href="/custom_ajax_command/customalert"> Alert (custom) me! </a>
 			</p>
 			</div>
 
@@ -37,94 +56,38 @@ class CustomAjaxCommandController extends ControllerBase {
     	];
 	}
 	public function trigger3() {
-
-		$ret = rmdir('/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_3/');
-		if(! $ret) 
-		{
-			$rmdir_result = "failed to rmdir";
-		} else {
-			$rmdir_result = "succeded to rmdir";
-		}
-
+		\Drupal::state()->set('qqq', 777);
+		$this->set_a(3); //\Drupal::state()->get('EventDisplayCurrentBuffer');
+		$current_buf_now = $this->get_a();
 		return [
 			'#type' => 'markup',
 			'#markup' => $this->t('<p> 
-									Result : ' . $rmdir_result . '<br>
+									Current buffer now is from class var  = ' . $current_buf_now . '<br>
 									</p>'),
 		];
 	}
 
 	public function trigger2() {
-
-		$ret = rmdir('/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_2/');
-		if(! $ret) 
-		{
-			$rmdir_result = "failed to rmdir";
-		} else {
-			$rmdir_result = "succeded to rmdir";
-		}
-	  
-		// $dst_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_2';
-		// // delete dir if exists
-		// $rmdir2_result = "";
-		// if ( is_dir($dst_path) ) {
-		// 	$rmdir2_result = rmdir($dst_path);
-		// } else {
-		// 	$rmdir2_result = "none";
-		// }
-
+		$current_buf_now = $this->get_a(); //\Drupal::state()->get('EventDisplayCurrentBuffer');
 		return [
 			'#type' => 'markup',
 			'#markup' => $this->t('<p> 
-									Result : ' . $rmdir_result . '<br>
-									</p>'),
+			Current buffer now is from class var  = ' . $current_buf_now . '<br>
+			Current buffer now is from class var  = ' . \Drupal::state()->get('qqq') . '<br>
+			</p>'),
 		];
-
 	}
 
 	// To be triggered by an external request (from ed_reader when ready) via a curl/wget/httprequest.
 	public function trigger() {
 
-		// read the current index
-		// EventDisplayCurrentBuffer is the current source of screenshots for a client
-		$current_buf = \Drupal::state()->get('EventDisplayCurrentBuffer');
-		if ($current_buf == "") 
-			$current_buf = 1;
+		// destination path
+		$current_buf = gmdate("U");
+
+		$dst_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_' . $current_buf;
 
 		// source path
 		$src_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_copied';
-			
-		// destination path
-		if ($current_buf == "1") {
-			$dst_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_2';
-		} else if ($current_buf == "2") {
-			$dst_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_1';
-		} else {
-			$dst_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_unknown';
-		}
-		
-		// // delete files if exist
-		$rmdir_result = "";
-		if ( is_dir($dst_path) ) {
-			array_map('unlink', glob($dst_path . "/*"));
-			$rmdir_result = "ok";
-		} else {
-			$rmdir_result = "none";
-		}
-		
-		// // delete dir if exists
-		$rmdir2_result = "";
-		if ( is_dir($dst_path) ) {
-			$rmdir2_result = rmdir($dst_path);
-		} else {
-			$rmdir2_result = "none";
-		}
-
-		// $ff = [];
-		// foreach (glob($dst_path. "/*") as $filename) {
-		// 	array_push($ff, $filename);      
-		// 	unlink($filename);
-		// }
 
 		//move
 		$rename_result = "";
@@ -132,38 +95,33 @@ class CustomAjaxCommandController extends ControllerBase {
 			$rename_result = 'failed';
 		} else {
 			$rename_result = 'ok';
-			if ($current_buf == "1") {
-				\Drupal::state()->set('EventDisplayCurrentBuffer','2');
-			} else {
-				\Drupal::state()->set('EventDisplayCurrentBuffer','1');
-			}
+			\Drupal::state()->delete('qqq');
+			\Drupal::state()->set('qqq', (int)$current_buf);
+			//\Drupal::state()->set('EventDisplayCurrentBuffer', $current_buf);
 		}
 
 		// return 
-		$current_buf_now = \Drupal::state()->get('EventDisplayCurrentBuffer');
+		$current_buf_now = $this->get_a(); //\Drupal::state()->get('EventDisplayCurrentBuffer');
 		return [
 			'#type' => 'markup',
 			'#markup' => $this->t('<p> 
 									Current buffer was       : ' . $current_buf . '<br>
 									Result of the rename was : ' . $rename_result . '<br>
 									Current buffer now is    : ' . $current_buf_now . '<br>
-									Path of source           : ' . $src_path . '<br>
-									Path of destination      : ' . $dst_path . '<br>
-									Result of rmdir          : ' . $rmdir_result . '<br>
-									Result of rmdir2         : ' . $rmdir2_result . '<br>
-									files ======== ' . implode(",", $ff) . '<br>
-									len ======== ' . count($ff) . '<br>
+									(src) Path : ' . $src_path . '<br>
+									(dst) Path : ' . $dst_path . '<br>
 									</p>'),
 		];
 	}
 
 
 	public function getCurrentBuffer() {
-		$current_buf_now = \Drupal::state()->get('EventDisplayCurrentBuffer');
+//		$current_buf_now = \Drupal::state()->get('EventDisplayCurrentBuffer');
+		$current_buf_now = \Drupal::state()->get('qqq');
 		$dir_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_' . $current_buf_now;
 		$img_path = '/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_' . $current_buf_now;
 		$d = array_diff(scandir($dir_path), array('..', '.', '.DAV')); 
-		$ret['d'] = sizeof($d);
+		$ret['d'] = array_slice($d, 0, 10);
 		$ret['img_path'] = $img_path;
 		$ret['current_buf_now'] = $current_buf_now;
 		return $ret;
@@ -178,7 +136,7 @@ class CustomAjaxCommandController extends ControllerBase {
 
 		// TODO: do a better matching! e.g: for filename pattern 'ss_123456789.png'?
 		$d = array_diff(scandir($dir_path), array('..', '.', '.DAV')); 
-		$ret['d'] = sizeof($d);
+		$ret['d'] = $d;
 		
 		$ts_now = gmdate("U"); //time();
 		$ret['ts_current'] = $ts_now;
