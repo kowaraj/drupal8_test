@@ -10,33 +10,20 @@ use Drupal\Core\Ajax\AlertCommand;
 
 class CustomAjaxCommandController extends ControllerBase {
 
-	private $a = 666;
-
-	private function set_a($new_a) {
-		$this->a = $new_a;
-	}
-
-	private function get_a() {
-		return $this->a;
-	}
-
 	public function customalert() {
- 
-		# New responses
 		$response = new AjaxResponse();
-
-        # Custom Ajax command
-        $message = 'This alert () was started from the Ajax custom command';
-        $response->addCommand(new CustomAjaxCommand($message));
- 
-		# Return response
+		$buffer_info = $this->getCurrentBuffer();
+		$response->addCommand(new CustomAjaxCommand($buffer_info));
 		return $response;
 	}
 
 	public function testpage() {
 		return [
       			'#type' => 'markup',
-      			'#markup' => $this->t('
+				'#markup' => $this->t('
+
+			<div id="ed00ss" data-list1="" data-list2="" data-index="1"> </div>
+
 			<div>
 			<script>
 				window.onload=function(){
@@ -47,34 +34,26 @@ class CustomAjaxCommandController extends ControllerBase {
 				}
 			</script>
 
+			<img id="ed00" style="width:600px;height:360px;border:0;" src="/sites/test-apashnin.web.cern.ch/files/EventDisplay/ss_default.png"> 
+
 			<p hidden>
 			<a id="id_customalert" class="use-ajax" href="/custom_ajax_command/customalert"> Alert (custom) me! </a>
 			</p>
 			</div>
-
 			'),
     	];
 	}
 	public function trigger3() {
-		\Drupal::state()->set('qqq', 777);
-		$this->set_a(3); //\Drupal::state()->get('EventDisplayCurrentBuffer');
-		$current_buf_now = $this->get_a();
 		return [
 			'#type' => 'markup',
-			'#markup' => $this->t('<p> 
-									Current buffer now is from class var  = ' . $current_buf_now . '<br>
-									</p>'),
+			'#markup' => $this->t('<p> </p>'),
 		];
 	}
 
 	public function trigger2() {
-		$current_buf_now = $this->get_a(); //\Drupal::state()->get('EventDisplayCurrentBuffer');
 		return [
 			'#type' => 'markup',
-			'#markup' => $this->t('<p> 
-			Current buffer now is from class var  = ' . $current_buf_now . '<br>
-			Current buffer now is from class var  = ' . \Drupal::state()->get('qqq') . '<br>
-			</p>'),
+			'#markup' => $this->t('<p> </p>'),
 		];
 	}
 
@@ -97,11 +76,10 @@ class CustomAjaxCommandController extends ControllerBase {
 			$rename_result = 'ok';
 			\Drupal::state()->delete('qqq');
 			\Drupal::state()->set('qqq', (int)$current_buf);
-			//\Drupal::state()->set('EventDisplayCurrentBuffer', $current_buf);
 		}
 
 		// return 
-		$current_buf_now = $this->get_a(); //\Drupal::state()->get('EventDisplayCurrentBuffer');
+		$current_buf_now = \Drupal::state()->get('qqq');
 		return [
 			'#type' => 'markup',
 			'#markup' => $this->t('<p> 
@@ -116,7 +94,6 @@ class CustomAjaxCommandController extends ControllerBase {
 
 
 	public function getCurrentBuffer() {
-//		$current_buf_now = \Drupal::state()->get('EventDisplayCurrentBuffer');
 		$current_buf_now = \Drupal::state()->get('qqq');
 		$dir_path = '/drupal/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_' . $current_buf_now;
 		$img_path = '/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer_current_' . $current_buf_now;
@@ -161,24 +138,9 @@ class CustomAjaxCommandController extends ControllerBase {
 	}
 
 	public function customalert2() {
- 
-		# New responses
 		$response = new AjaxResponse();
-
-        # Custom Ajax command
-		//$message = 'This alert () was started from the Ajax custom command2-2';
-		// $img_list = [
-		// 	"/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740332.png", 
-		// 	"/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740333.png", 
-		// 	"/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740334.png",
-		// 	"/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740335.png",
-		// 	"/sites/test-apashnin.web.cern.ch/files/EventDisplay/buffer/ss_1561740336.png"
-		//   ];
 		$buffer_info = $this->getCurrentBuffer();
-		//$response->addCommand(new CustomAjaxCommand2($message));
 		$response->addCommand(new CustomAjaxCommand2($buffer_info));
- 
-		# Return response
 		return $response;
 	}
 
